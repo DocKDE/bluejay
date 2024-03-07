@@ -1,0 +1,121 @@
+# image will be published to ghcr.io/<user>/<name>
+name: bluejay-next-plasma
+# description will be included in the image's metadata
+description: Custom spin of Fedora Kinoite
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/kinoite-main
+image-version: 39 # latest is also supported if you want new updates ASAP
+
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  - type: files
+    files:
+      - usr/share/ublue-os: /usr/share/ublue-os
+      - usr/etc/xdg/autostart: /usr/etc/xdg/autostart
+          # copies config/files/usr into your image's /usr.
+          # put configuration files you want in /etc/ on a booted system 
+          # in /usr/etc/ in the image. read more in files module reference.
+
+  - type: rpm-ostree
+    repos: # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+      - https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-%OS_VERSION%/ublue-os-staging-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/kylegospo/webapp-manager/repo/fedora-%OS_VERSION%/kylegospo-webapp-manager-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/varlad/helix/repo/fedora-%OS_VERSION%/varlad-helix-fedora-%OS_VERSION%.repo
+      - https://download.docker.com/linux/fedora/docker-ce.repo
+      - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+    install:
+      # Plasma stuff
+      - arc-kde
+      - kde-gtk-config
+      - kate
+      - kde-connect
+      - latte-dock
+      # Theming
+      - papirus-icon-theme
+      - breeze-cursor-theme
+      # Utils
+      - tailscale
+      - btrfs-assistant
+      - snapper
+      # Dev stuff
+      - distrobox
+      - alacritty
+      - containerd.io 
+      - dnf-plugins-core
+      - docker-buildx-plugin 
+      - docker-ce 
+      - docker-ce-cli 
+      - docker-compose-plugin
+      - fira-code-fonts
+      - helix
+      - starship
+      - util-linux-user
+      - webapp-manager
+      - wkhtmltopdf
+      - yakuake
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+
+    remove:
+      - toolbox
+      - tmux
+      - nvtop
+      - firefox # default firefox removed in favor of flatpak
+      - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
+
+  - type: bling # configure what to pull in from ublue-os/bling
+    install:
+      - 1password # install 1Password (stable) and `op` CLI tool
+      - ublue-update # https://github.com/ublue-os/ublue-update
+      - laptop # installs TLP and configures your system for laptop usage
+
+  - type: default-flatpaks
+    notify: true   # Send notification after install/uninstall is finished (true/false)
+    system:
+      # If no repo information is specified, Flathub will be used by default
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
+      repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+      install:
+      # - one.ablaze.floorp//lightning # This is an example of flatpak which has multiple branches in selection (flatpak//branch).
+      # Flatpak runtimes are not supported (like org.winehq.Wine//stable-23.08).
+      # Only normal flatpak applications are (like Floorp Lightning web browser in this example).
+      # Multiple install of same flatpaks with different branches is not supported.
+      # Custom
+      - com.bitwarden.desktop
+      - io.freetubeapp.FreeTube
+      - com.github.iwalton3.jellyfin-media-player
+      - io.mpv.Mpv
+      - com.nextcloud.desktopclient.nextcloud
+      - com.github.junrrein.PDFSlicer
+      - org.signal.Signal
+      - io.github.flattool.Warehouse
+      - com.github.xournalpp.xournalpp
+      - com.github.tchx84.Flatseal
+      - org.mozilla.firefox
+      - org.libreoffice.LibreOffice      
+      - org.mozilla.Thunderbird      
+      - org.localsend.localsend_app
+      - dev.deedles.Trayscale
+      # Dev apps
+      - com.github.qarmin.czkawka
+      - fr.handbrake.ghb
+      - rest.insomnia.Insomnia
+      - com.slack.Slack
+      - com.notesnook.Notesnook
+      - com.github.Eloston.UngoogledChromium
+      - us.zoom.Zoom
+      remove:
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
+  - type: script
+    scripts:
+      - tailscale.sh
+      - repo-cleanup-dx.sh
+      - font.sh

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+    <wallpaper>
+        <name>uBlue Starry Rainbow Tree</name>
+        <filename>/usr/share/backgrounds/starry-rainbow-tree.jpg</filename>
+        <options>zoom</options>
+        <shade_type>solid</shade_type>
+        <pcolor>#000000</pcolor>
+        <scolor>#ffffff</scolor>
+    </wallpaper>
+</wallpapers>
+

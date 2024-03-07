@@ -1,0 +1,175 @@
+[org/gnome/shell] 
+favorite-apps = ['org.mozilla.firefox.desktop', 'com.github.Eloston.UngoogledChromium.desktop', 'org.mozilla.Thunderbird.desktop', 'com.notesnook.Notesnook.desktop', 'com.slack.Slack.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'Alacritty.desktop', 'jetbrains-toolbox.desktop', '1password.desktop', 'com.bitwarden.desktop.desktop', 'io.freetubeapp.FreeTube.desktop', 'org.gnome.Settings.desktop', 'rest.insomnia.Insomnia.desktop', 'btrfs-assistant.desktop']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'gsconnect@andyholmes.github.io', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'blur-my-shell@aunetx', 'tailscale-status@maxgallup.github.com', 'caffeine@patapon.info', 'unredirect@vaina.lt']
+
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/backgrounds/starry-rainbow-tree.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/starry-rainbow-tree.jpg'
+picture-options='stretched'
+primary-color='000000'
+secondary-color='FFFFFF'
+
+[org/gnome/desktop/interface]
+enable-hot-corners=false
+clock-show-weekday=true
+cursor-theme="breeze_cursors"
+icon-theme="Papirus-Dark"
+gtk-theme="adw-gtk3-dark"
+color-scheme="prefer-dark"
+font-name="Cantarell Regular 11"
+document-font-name="Cantarell Regular 11"
+monospace-font-name="FiraCode Nerd Font Medium 10"
+show-battery-percentage=true
+
+[org/gnome/desktop/sound]
+allow-volume-above-100-percent=true
+
+[org/gnome/desktop/wm/preferences]
+button-layout=":minimize,maximize,close"
+num-workspaces='4'
+title-bar-font="Cantarell Bold 11"
+
+[org/gnome/desktop/wm/keybindings]
+close = ['<Super>q']
+switch-applications = ['<Super>Tab']
+switch-applications-backward = ['<Shift><Super>Tab']
+switch-group = ['<Alt>Tab']
+switch-group-backward = ['<Shift><Alt>Tab']
+minimize=['<Super>Down']
+move-to-workspace-1=['<Shift><Super>1']
+move-to-workspace-2=['<Shift><Super>2']
+move-to-workspace-3=['<Shift><Super>3']
+move-to-workspace-4=['<Shift><Super>4']
+move-to-workspace-left=['<Control><Super>Left']
+move-to-workspace-right=['<Control><Super>Right']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+
+[org/gnome/shell/app-switcher]
+current-workspace-only=true
+
+[org/gnome/mutter]
+workspaces-only-on-primary=false
+
+[org/gnome/desktop/input-sources]
+xkb-options = ['caps:escape']
+
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+
+[org/gnome/shell/extensions/dash-to-dock]
+dock-fixed=false
+show-mounts=false
+show-trash=false
+show-show-apps-button=false
+show-icons-emblems=false
+running-indicator-style="DOTS"
+hot-keys=false
+scroll-action="cycle-windows"
+click-action="skip"
+force-straight-corner=false
+custom-theme-shrink=true
+disable-overview-on-startup=true
+transparency-mode='DYNAMIC'
+animation-time=0.15
+background-color='rgb(40,40,40)'
+background-opacity=0.8
+custom-background-color=true
+customize-alphas=true
+max-alpha=0.8
+min-alpha=0.5
+
+[org/gnome/shell/extensions/pano]
+global-shortcut=['<Shift><Super>a']
+history-length=20
+incognito-shortcut=['<Shift><Control><Super>a']
+is-in-incognito=false
+play-audio-on-copy=false
+send-notification-on-copy=false
+sync-primary=true
+
+[org/gnome/shell/extensions/pano/text-item]
+body-bg-color='rgb(48,52,70)'
+body-color='rgb(112,172,166)'
+body-font-family='FiraCode Nerd Font Mono'
+body-font-size=14
+header-bg-color='rgb(36,36,36)'
+header-color='rgb(146,146,146)'
+
+[org/gnome/extensions/blur-my-shell/panel]
+override-background-dynamically=true
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>Return'
+command='alacritty'
+name='Alacritty'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='F12'
+command='guake -t'
+name='Guake'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Control><Alt>t'
+command='gnome-terminal'
+name='Gnome-Terminal'
+
+[org/gnome/settings-daemon/plugins/power]
+power-button-action='interactive'
+
+[org/gtk/gtk4/settings/file-chooser]
+sort-directories-first=true
+
+[org/gnome/mutter]
+experimental-features=['scale-monitor-framebuffer']
+
+[org/gnome/nautilus/list-view]
+default-zoom-level='small'
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='list-view'
+
+[apps/guake/general]
+compat-delete='delete-sequence'
+default-shell='/usr/bin/zsh'
+display-n=0
+display-tab-names=0
+gtk-prefer-dark-theme=true
+gtk-theme-name='adw-gtk3-dark'
+history-size=1000
+max-tab-name-length=100
+mouse-display=true
+open-tab-cwd=true
+prompt-on-quit=false
+quick-open-command-line='gedit %(file_path)s'
+restore-tabs-notify=false
+restore-tabs-startup=false
+save-tabs-when-changed=true
+scroll-keystroke=true
+start-at-login=true
+use-default-font=false
+use-popup=false
+use-scrollbar=false
+use-trayicon=false
+window-halignment=0
+window-height=50
+window-losefocus=false
+window-refocus=true
+window-tabbar=false
+window-width=100
+
+[apps/guake/keybindings/global]
+show-hide='disabled'
+
+[apps/guake/style/background]
+transparency=95
+
+[apps/guake/style/font]
+allow-bold=true
+palette='#1B1B2B2B3434:#ECEC5f5f6767:#9999C7C79494:#FAFAC8C86363:#66669999CCCC:#C5C59494C5C5:#5F5FB3B3B3B3:#C0C0C5C5CECE:#656573737E7E:#ECEC5f5f6767:#9999C7C79494:#FAFAC8C86363:#66669999CCCC:#C5C59494C5C5:#5F5FB3B3B3B3:#D8D8DEDEE9E9:#C0C0C5C5CECE:#1B1B2B2B3434'
+palette-name='Oceanic Next Dark'
+style='FiraCode Nerd Font Mono Medium 13'

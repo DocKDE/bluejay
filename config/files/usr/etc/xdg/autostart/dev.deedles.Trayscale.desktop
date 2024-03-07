@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Trayscale
+Comment=An unofficial GUI wrapper around the Tailscale CLI.
+Categories=System;GNOME;GTK;
+Icon=dev.deedles.Trayscale
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=trayscale dev.deedles.Trayscale --hide-window
+Terminal=false
+SingleMainWindow=true
+X-GNOME-UsesNotifications=true
+X-Flatpak=dev.deedles.Trayscale

@@ -1,7 +1,7 @@
 # image will be published to ghcr.io/<user>/<name>
 name: bluejay-next
 # description will be included in the image's metadata
-description: This is my personal OS image.
+description: Custom spin of Fedora Silverblue, somewhat similar to bluefin
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
@@ -19,28 +19,99 @@ modules:
 
   - type: rpm-ostree
     repos: # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+      - https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-%OS_VERSION%/ublue-os-staging-fedora-%OS_VERSION%.repo
     install:
-      # - micro
-      # - starship
+      # GNOME stuff
+      - gnome-shell-extension-user-theme
+      - gnome-shell-extension-dash-to-dock
+      - gnome-shell-extension-blur-my-shell
+      - gnome-shell-extension-appindicator
+      - gnome-shell-extension-gsconnect
+      - gnome-shell-extension-caffeine
+      - nautilus-gsconnect
+      - gnome-tweaks
+      # Theming
+      - papirus-icon-theme
+      - breeze-cursor-theme
+      # Utils
+      - tailscale
+      - btrfs-assistant
+      - snapper
+      - distrobox
     remove:
+      - toolbox
+      - tmux
+      - nvtop
+      - gnome-tour
       - firefox # default firefox removed in favor of flatpak
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
+
+  - type: bling # configure what to pull in from ublue-os/bling
+    install:
+      - ublue-update # https://github.com/ublue-os/ublue-update
+      - dconf-update-service # a service unit that updates the dconf db on boot
+      - laptop # installs TLP and configures your system for laptop usage
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
       # If no repo information is specified, Flathub will be used by default
-      # repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      # repo-name: flathub
-      # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
+      repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
       install:
-        - org.mozilla.firefox
         # - org.gnome.Loupe
         # - one.ablaze.floorp//lightning # This is an example of flatpak which has multiple branches in selection (flatpak//branch).
         # Flatpak runtimes are not supported (like org.winehq.Wine//stable-23.08),
         # only normal flatpak applications are (like Floorp Lightning web browser in this example).
         # Installing different branches of the same Flatpak is not supported.
+      # Core GNOME apps
+      - org.gnome.Calculator
+      - org.gnome.Calendar
+      - org.gnome.Snapshot
+      - org.gnome.Characters
+      - org.gnome.clocks
+      - org.gnome.Connections
+      - org.gnome.Contacts
+      - org.gnome.baobab
+      - org.gnome.SimpleScan
+      - org.gnome.Evince
+      - com.mattjakeman.ExtensionManager
+      - org.gnome.font-viewer
+      - org.gnome.Loupe
+      - org.gnome.Logs
+      - org.gnome.Maps
+      - org.gnome.Photos
+      - org.gnome.NautilusPreviewer
+      - org.gnome.TextEditor
+      - org.gnome.Weather
+      # Custom
+      - org.gtk.Gtk3theme.adw-gtk3 
+      - org.gtk.Gtk3theme.adw-gtk3-dark
+      - com.bitwarden.desktop
+      - io.freetubeapp.FreeTube
+      - org.gnome.gThumb
+      - com.github.iwalton3.jellyfin-media-player
+      - io.mpv.Mpv
+      - com.nextcloud.desktopclient.nextcloud
+      - com.github.junrrein.PDFSlicer
+      - org.signal.Signal
+      - io.github.flattool.Warehouse
+      - com.github.xournalpp.xournalpp
+      - com.github.tchx84.Flatseal
+      - org.gustavoperedo.FontDownloader
+      - org.mozilla.firefox
+      - org.libreoffice.LibreOffice      
+      - org.mozilla.Thunderbird      
+      - org.localsend.localsend_app
+      - dev.deedles.Trayscale
       remove:
-        # - org.gnome.eog
+        - org.gnome.eog
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
+  - type: script
+    scripts:
+      - tailscale.sh
+      - repo-cleanup.sh

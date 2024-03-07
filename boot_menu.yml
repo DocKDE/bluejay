@@ -1,13 +1,13 @@
 ublue_variants:
-  - label: dockde/bluejay-next
+  - label: dockde/bluejay
     ks: /kickstart/ublue-os.ks
     flavors:
-      - label: bluejay-next
-  - label: dockde/bluejay-next-dx
+      - label: bluejay
+  - label: dockde/bluejay-dx
     ks: /kickstart/ublue-os.ks
     flavors:
-      - label: bluejay-next-dx
+      - label: bluejay-dx
   - label: dockde/bluejay-plasma
     ks: /kickstart/ublue-os.ks
     flavors:
-      - label: bluejay-next-plasma
+      - label: bluejay-plasma

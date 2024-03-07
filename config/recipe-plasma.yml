@@ -1,5 +1,5 @@
 # image will be published to ghcr.io/<user>/<name>
-name: bluejay-next-plasma
+name: bluejay-plasma
 # description will be included in the image's metadata
 description: Custom spin of Fedora Kinoite
 

@@ -59,6 +59,7 @@ modules:
       - wkhtmltopdf
       - starship
       - util-linux-user
+      - zoxide
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting

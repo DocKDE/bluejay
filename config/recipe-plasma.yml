@@ -57,6 +57,7 @@ modules:
       - webapp-manager
       - wkhtmltopdf
       - yakuake
+      - zoxide
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting

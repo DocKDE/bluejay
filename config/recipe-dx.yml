@@ -18,11 +18,10 @@ modules:
           # put configuration files you want in /etc/ on a booted system 
           # in /usr/etc/ in the image. read more in files module reference.
       - dx/01-ublue-dx: /usr/etc/dconf/db/local.d/01-ublue
+      - dx/brew-packages.txt: /usr/share/
 
   - type: rpm-ostree
     repos: # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/varlad/helix/repo/fedora-%OS_VERSION%/varlad-helix-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/kylegospo/webapp-manager/repo/fedora-%OS_VERSION%/kylegospo-webapp-manager-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-%OS_VERSION%/ublue-os-staging-fedora-%OS_VERSION%.repo
       - https://download.docker.com/linux/fedora/docker-ce.repo
@@ -42,8 +41,8 @@ modules:
       - breeze-cursor-theme
       # Utils
       - tailscale
-      - btrfs-assistant
-      - snapper
+      # - btrfs-assistant
+      # - snapper
       # Dev stuff
       - distrobox
       - alacritty
@@ -54,15 +53,12 @@ modules:
       - docker-ce-cli 
       - docker-compose-plugin
       - fira-code-fonts
-      - helix
       - webapp-manager
       - wkhtmltopdf
-      - starship
       - util-linux-user
-      - zoxide
-      - zsh
-      - zsh-autosuggestions
-      - zsh-syntax-highlighting
+      # - zsh
+      # - zsh-autosuggestions
+      # - zsh-syntax-highlighting
 
     remove:
       - toolbox

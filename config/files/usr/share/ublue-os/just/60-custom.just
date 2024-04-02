@@ -39,23 +39,29 @@ install-nix:
 
 # Set zsh as default shell for current user
 zsh:
-    sudo chsh -s /usr/bin/zsh $USER 
+    if [[ -f /home/linuxbrew/.linuxbrew/bin/zsh ]]; then
+        sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
+    else
+        sudo chsh -s /usr/bin/zsh $USER
+    fi
 
 # Install Catppuccin themes for Gnome-terminal
 terminal-theme:
     curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 -
 
+brew:
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    grep -v '^#' /usr/share/brew-packages.txt | xargs brew install
+
 # Setup for personal dev work
 dev-setup:
-    just --unstable zsh
+    just --unstable brew
     just --unstable terminal-theme
     just --unstable docker
     just --unstable podman
-    just --unstable install-nix
-    just --unstable devbox-create
     just --unstable dotfiles
-    just --unstable jetbrains-toolbox
-    printf "\n\nSetup almost finished. Please restart and run 'just devenv' for the last step."
+    just --unstable zsh
+    echo "Setup done. Please restart the machine."
 
 # Install devenv
 devenv:
@@ -78,8 +84,8 @@ distrobox-assemble:
 # Update and assemble distroboxes from ini
 distrobox-create:
     #!/usr/bin/env bash
-    if [ -e /run/.containerenv ] || [ -e /.dockerenv ]; then 
-      printf "This might kill the current shell session! \nPlease run this from a host shell! \n"; 
+    if [ -e /run/.containerenv ] || [ -e /.dockerenv ]; then
+      printf "This might kill the current shell session! \nPlease run this from a host shell! \n";
     else
       just --unstable distrobox-update
       just --unstable distrobox-assemble
@@ -92,10 +98,10 @@ devbox-update:
 # (Re)create personal distrobox for dev work
 devbox-create:
     #!/usr/bin/env bash
-    if [ -e /run/.containerenv ] || [ -e /.dockerenv ]; then 
-      printf "This might kill the current shell session! \nPlease run this from a host shell! \n"; 
+    if [ -e /run/.containerenv ] || [ -e /.dockerenv ]; then
+      printf "This might kill the current shell session! \nPlease run this from a host shell! \n";
     else
       podman pull ghcr.io/dockde/arch-distrobox:latest
-      /usr/bin/distrobox rm -f arch 2> /dev/null || true 
+      /usr/bin/distrobox rm -f arch 2> /dev/null || true
       distrobox create arch -i ghcr.io/dockde/arch-distrobox:latest --volume /usr/share/ublue-os/justfile:/usr/share/ublue-os/justfile --volume /usr/share/ublue-os/just:/usr/share/ublue-os/just --volume /etc/nix/:/etc/nix/
     fi

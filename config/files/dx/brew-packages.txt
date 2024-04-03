@@ -9,7 +9,7 @@ direnv
 dive
 dust
 dysk
-exa
+eza
 fd
 # flux
 fzf

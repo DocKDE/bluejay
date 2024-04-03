@@ -128,7 +128,7 @@ modules:
       - fr.handbrake.ghb
       - rest.insomnia.Insomnia
       - com.slack.Slack
-      - com.notesnook.Notesnook
+      - md.obsidian.Obsidian
       - com.github.Eloston.UngoogledChromium
       - us.zoom.Zoom
       # - one.ablaze.floorp//lightning # This is an example of flatpak which has multiple branches in selection (flatpak//branch).

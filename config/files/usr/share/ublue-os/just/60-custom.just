@@ -54,7 +54,7 @@ terminal-theme:
 # Setup for personal dev work
 dev-setup:
     just --unstable install-brew && \
-    grep -v '^#' /usr/share/brew-packages.txt | xargs brew install
+    grep -v '^#' /usr/share/brew-packages.txt | xargs /home/linuxbrew/.linuxbrew/bin/brew install
     just --unstable terminal-theme
     just --unstable docker
     just --unstable podman

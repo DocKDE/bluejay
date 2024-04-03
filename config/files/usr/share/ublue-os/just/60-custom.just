@@ -50,14 +50,11 @@ zsh:
 terminal-theme:
     curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 -
 
-# Install brew and packages
-brew:
-    #!/usr/bin/env bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && grep -v '^#' /usr/share/brew-packages.txt | xargs brew install
 
 # Setup for personal dev work
 dev-setup:
-    just --unstable brew
+    just --unstable install-brew && \
+    grep -v '^#' /usr/share/brew-packages.txt | xargs brew install
     just --unstable terminal-theme
     just --unstable docker
     just --unstable podman

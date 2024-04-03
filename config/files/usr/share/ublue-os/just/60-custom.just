@@ -53,6 +53,8 @@ terminal-theme:
 
 # Setup for personal dev work
 dev-setup:
+    #!/usr/bin/env bash
+    ulimit -n 4096
     just --unstable install-brew && \
     grep -v '^#' /usr/share/brew-packages.txt | xargs /home/linuxbrew/.linuxbrew/bin/brew install
     just --unstable terminal-theme

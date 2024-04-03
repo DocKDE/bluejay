@@ -39,6 +39,7 @@ install-nix:
 
 # Set zsh as default shell for current user
 zsh:
+    #!/usr/bin/env bash
     if [[ -f /home/linuxbrew/.linuxbrew/bin/zsh ]]; then
         sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
     else
@@ -49,9 +50,10 @@ zsh:
 terminal-theme:
     curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 -
 
+# Install brew and packages
 brew:
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    grep -v '^#' /usr/share/brew-packages.txt | xargs brew install
+    #!/usr/bin/env bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && grep -v '^#' /usr/share/brew-packages.txt | xargs brew install
 
 # Setup for personal dev work
 dev-setup:

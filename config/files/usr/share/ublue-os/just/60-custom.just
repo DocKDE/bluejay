@@ -73,36 +73,3 @@ devenv:
     nix profile install nixpkgs#cachix
     cachix use devenv
     nix profile install --accept-flake-config tarball+https://install.devenv.sh/latest
-
-# Pull distrobox images to get updates
-distrobox-update:
-    podman pull ghcr.io/dockde/arch-distrobox:latest quay.io/toolbx-images/ubuntu-toolbox:latest registry.fedoraproject.org/fedora-toolbox:latest
-
-# Assemble distroboxes from ini file
-distrobox-assemble:
-    distrobox assemble create --replace --file /usr/share/ublue-os/distrobox/distrobox.ini
-
-# Update and assemble distroboxes from ini
-distrobox-create:
-    #!/usr/bin/env bash
-    if [ -e /run/.containerenv ] || [ -e /.dockerenv ]; then
-      printf "This might kill the current shell session! \nPlease run this from a host shell! \n";
-    else
-      just --unstable distrobox-update
-      just --unstable distrobox-assemble
-    fi
-
-# Update devbox image
-devbox-update:
-    podman pull ghcr.io/dockde/arch-distrobox:latest
-
-# (Re)create personal distrobox for dev work
-devbox-create:
-    #!/usr/bin/env bash
-    if [ -e /run/.containerenv ] || [ -e /.dockerenv ]; then
-      printf "This might kill the current shell session! \nPlease run this from a host shell! \n";
-    else
-      podman pull ghcr.io/dockde/arch-distrobox:latest
-      /usr/bin/distrobox rm -f arch 2> /dev/null || true
-      distrobox create arch -i ghcr.io/dockde/arch-distrobox:latest --volume /usr/share/ublue-os/justfile:/usr/share/ublue-os/justfile --volume /usr/share/ublue-os/just:/usr/share/ublue-os/just --volume /etc/nix/:/etc/nix/
-    fi

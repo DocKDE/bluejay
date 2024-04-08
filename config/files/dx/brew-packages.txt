@@ -5,7 +5,6 @@ bash-language-server
 bat
 bottom
 clipboard
-direnv
 dive
 dust
 dysk
@@ -13,6 +12,7 @@ eza
 fd
 # flux
 fzf
+git-credential-libsecret
 git-delta
 git-filter-repo
 git-remote-codecommit

@@ -1,0 +1,13 @@
+[env]
+ARCH = "x86_64"
+IMAGE_REPO = "ghcr.io/dockde"
+IMAGE_NAME = "bluejay-dx"
+IMAGE_TAG = "latest"
+WEB_UI = "false"
+IMAGE_VARIANT = "Silverblue"
+INSTALLER_VERSION = "40"
+
+[tasks.build-iso]
+description = "Build ISO"
+run = "docker run --rm --privileged --volume .:/isogenerator/output -e IMAGE_REPO=\"$IMAGE_REPO\" -e IMAGE_NAME=\"$IMAGE_NAME\" -e IMAGE_TAG=\"$IMAGE_TAG\" -e WEB_UI=\"$WEB_UI\" -e VARIANT=\"$IMAGE_VARIANT\" ghcr.io/ublue-os/isogenerator:$INSTALLER_VERSION"
+

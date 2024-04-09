@@ -30,7 +30,7 @@ modules:
       - kde-gtk-config
       - kate
       - kde-connect
-      - latte-dock
+      # - latte-dock
       # Theming
       - papirus-icon-theme
       - breeze-cursor-theme

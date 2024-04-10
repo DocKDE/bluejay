@@ -30,6 +30,7 @@ ripgrep
 shellcheck
 starship
 taplo
+topgrade
 watchexec
 yaml-language-server
 yt-dlp

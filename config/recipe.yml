@@ -25,7 +25,7 @@ modules:
       # GNOME stuff
       - gnome-shell-extension-user-theme
       - gnome-shell-extension-dash-to-dock
-      - gnome-shell-extension-blur-my-shell
+      # - gnome-shell-extension-blur-my-shell
       - gnome-shell-extension-appindicator
       - gnome-shell-extension-gsconnect
       - gnome-shell-extension-caffeine
@@ -52,6 +52,11 @@ modules:
       - ublue-update # https://github.com/ublue-os/ublue-update
       - dconf-update-service # a service unit that updates the dconf db on boot
       - laptop # installs TLP and configures your system for laptop usage
+
+  - type: systemd
+    system:
+      enabled:
+        - tailscaled.service
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -113,5 +118,4 @@ modules:
 
   - type: script
     scripts:
-      - tailscale.sh
       - repo-cleanup.sh

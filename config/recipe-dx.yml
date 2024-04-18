@@ -53,6 +53,7 @@ modules:
       - docker-ce-cli 
       - docker-compose-plugin
       - fira-code-fonts
+      - virt-manager
       - webapp-manager
       - wkhtmltopdf
       - util-linux-user
@@ -74,6 +75,10 @@ modules:
       - ublue-update # https://github.com/ublue-os/ublue-update
       - dconf-update-service # a service unit that updates the dconf db on boot
       - laptop # installs TLP and configures your system for laptop usage
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode
 
   - type: default-flatpaks
     notify: true   # Send notification after install/uninstall is finished (true/false)
@@ -124,6 +129,7 @@ modules:
       - org.localsend.localsend_app
       - dev.deedles.Trayscale
       # Dev apps
+      - io.github.dvlv.boxbuddyrs
       - com.github.qarmin.czkawka
       - fr.handbrake.ghb
       - rest.insomnia.Insomnia
@@ -144,6 +150,6 @@ modules:
     scripts:
       # this sets up the proper policy & signing files for signed images to work
       - tailscale.sh
-      - font.sh
+      # - font.sh
       - repo-cleanup-dx.sh
       - unredirect.sh

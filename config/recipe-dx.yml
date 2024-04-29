@@ -26,6 +26,7 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-%OS_VERSION%/ublue-os-staging-fedora-%OS_VERSION%.repo
       - https://download.docker.com/linux/fedora/docker-ce.repo
       - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+      - https://raw.githubusercontent.com/DocKDE/bluejay/main/config/files/repos/protonvpn-stable.repo
     install:
       # GNOME stuff
       - gnome-shell-extension-user-theme
@@ -41,8 +42,7 @@ modules:
       - breeze-cursor-theme
       # Utils
       - tailscale
-      # - btrfs-assistant
-      # - snapper
+      - proton-vpn-gnome-desktop 
       # Dev stuff
       - distrobox
       - alacritty
@@ -57,9 +57,6 @@ modules:
       - webapp-manager
       - wkhtmltopdf
       - util-linux-user
-      # - zsh
-      # - zsh-autosuggestions
-      # - zsh-syntax-highlighting
 
     remove:
       - toolbox

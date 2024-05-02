@@ -82,6 +82,7 @@ modules:
     system:
       enabled:
         - tailscaled.service
+        - podman.socket
 
   - type: default-flatpaks
     notify: true   # Send notification after install/uninstall is finished (true/false)
@@ -154,5 +155,6 @@ modules:
       # this sets up the proper policy & signing files for signed images to work
       # - tailscale.sh
       # - font.sh
+      - proton.sh
       - repo-cleanup-dx.sh
       - unredirect.sh

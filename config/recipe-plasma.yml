@@ -69,6 +69,17 @@ modules:
       - ublue-update # https://github.com/ublue-os/ublue-update
       - laptop # installs TLP and configures your system for laptop usage
 
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode
+
+  - type: systemd
+    system:
+      enabled:
+        - tailscaled.service
+        - podman.socket
+
   - type: default-flatpaks
     notify: true   # Send notification after install/uninstall is finished (true/false)
     system:
@@ -111,6 +122,3 @@ modules:
 
   - type: script
     scripts:
-      - tailscale.sh
-      - repo-cleanup-dx.sh
-      - font.sh

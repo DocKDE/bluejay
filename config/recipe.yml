@@ -14,7 +14,7 @@ modules:
     files:
       - usr: /usr
           # copies config/files/usr into your image's /usr.
-          # put configuration files you want in /etc/ on a booted system 
+          # put configuration files you want in /etc/ on a booted system
           # in /usr/etc/ in the image. read more in files module reference.
 
   - type: rpm-ostree
@@ -26,7 +26,7 @@ modules:
       # GNOME stuff
       - gnome-shell-extension-user-theme
       - gnome-shell-extension-dash-to-dock
-      # - gnome-shell-extension-blur-my-shell
+      - gnome-shell-extension-blur-my-shell
       - gnome-shell-extension-appindicator
       - gnome-shell-extension-gsconnect
       - gnome-shell-extension-caffeine
@@ -37,7 +37,7 @@ modules:
       - breeze-cursor-theme
       # Utils
       - tailscale
-      - proton-vpn-gnome-desktop 
+      - proton-vpn-gnome-desktop
       - distrobox
     remove:
       - toolbox
@@ -92,7 +92,7 @@ modules:
       - org.gnome.TextEditor
       - org.gnome.Weather
       # Custom
-      - org.gtk.Gtk3theme.adw-gtk3 
+      - org.gtk.Gtk3theme.adw-gtk3
       - org.gtk.Gtk3theme.adw-gtk3-dark
       - com.bitwarden.desktop
       - io.freetubeapp.FreeTube
@@ -107,8 +107,8 @@ modules:
       - com.github.tchx84.Flatseal
       - org.gustavoperedo.FontDownloader
       - org.mozilla.firefox
-      - org.libreoffice.LibreOffice      
-      - org.mozilla.Thunderbird      
+      - org.libreoffice.LibreOffice
+      - org.mozilla.Thunderbird
       - org.localsend.localsend_app
       - dev.deedles.Trayscale
       remove:

@@ -100,7 +100,6 @@ modules:
       - org.gnome.gThumb
       - com.github.iwalton3.jellyfin-media-player
       - io.mpv.Mpv
-      - com.nextcloud.desktopclient.nextcloud
       - com.github.junrrein.PDFSlicer
       - org.signal.Signal
       - io.github.flattool.Warehouse

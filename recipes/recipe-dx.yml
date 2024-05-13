@@ -68,7 +68,6 @@ modules:
 
   - type: bling # configure what to pull in from ublue-os/bling
     install:
-      - 1password # install 1Password (stable) and `op` CLI tool
       - ublue-update # https://github.com/ublue-os/ublue-update
       - dconf-update-service # a service unit that updates the dconf db on boot
       - laptop # installs TLP and configures your system for laptop usage
@@ -83,6 +82,7 @@ modules:
       enabled:
         - tailscaled.service
         - podman.socket
+        - media-Server.mount
 
   - type: default-flatpaks
     notify: true   # Send notification after install/uninstall is finished (true/false)
@@ -154,7 +154,6 @@ modules:
     scripts:
       # this sets up the proper policy & signing files for signed images to work
       # - tailscale.sh
-      # - font.sh
       - proton.sh
       - repo-cleanup-dx.sh
       - unredirect.sh

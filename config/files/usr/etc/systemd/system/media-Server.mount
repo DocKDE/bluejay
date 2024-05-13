@@ -1,0 +1,12 @@
+[Unit]
+Description=Things devices
+After=network.target
+
+[Mount]
+What=server:/data
+Where=/media/Server
+Type=nfs
+Options=_netdev,auto
+
+[Install]
+WantedBy=multi-user.target

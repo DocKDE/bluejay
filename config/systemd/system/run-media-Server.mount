@@ -1,10 +1,10 @@
 [Unit]
-Description=Things devices
+Description=Server NFS share
 After=network.target
 
 [Mount]
 What=server:/data
-Where=/media/Server
+Where=/run/media/Server
 Type=nfs
 Options=_netdev,auto
 

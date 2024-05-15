@@ -57,7 +57,7 @@ modules:
     system:
       enabled:
         - tailscaled.service
-        - media-Server.mount
+        - run-media-Server.mount
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)

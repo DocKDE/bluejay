@@ -57,6 +57,21 @@ modules:
       - webapp-manager
       - wkhtmltopdf
       - util-linux-user
+      # Zed dev dependencies
+      - gcc
+      - g++
+      - alsa-lib-devel
+      - fontconfig-devel
+      - wayland-devel
+      - libxkbcommon-x11-devel
+      - openssl-devel
+      - libzstd-devel
+      - # Perl dependencies are needed for openssl-sys crate see https://docs.rs/openssl/latest/openssl/
+      - perl-FindBin
+      - perl-IPC-Cmd
+      - perl-File-Compare
+      - perl-File-Copy
+      - vulkan-loader
 
     remove:
       - toolbox

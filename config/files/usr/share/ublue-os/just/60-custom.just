@@ -80,16 +80,12 @@ devenv:
 rustup:
     #!/usr/bin/env bash
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    source /home/$USER/.cargo/env
 
 # Set up Zed 
 zed:
     #!/usr/bin/env bash
     mkdir -p /home/$USER/Code/zed
     git clone --recurse-submodules https://github.com/zed-industries/zed.git /home/$USER/Code/zed
-    cd /home/$USER/Code/zed
-    cargo build --release
-    ln -s /home/$USER/Code/zed/target/release/Zed /home/$USER/.local/bin/zed
 
     cat << EOF > /home/$USER/.local/share/applications/zed.desktop
     [Desktop Entry]
@@ -99,7 +95,7 @@ zed:
     GenericName=Text Editor
     Comment=A high-performance, multiplayer code editor.
     StartupNotify=true
-    Exec=/home/$USER/.local/bin/zed
+    Exec=/home/$USER/Code/zed/target/release/Zed
     Icon=/home/$USER/Code/zed/crates/zed/resources/app-icon-dev@2x.png
 
     Categories=TextEditor;Development;IDE;

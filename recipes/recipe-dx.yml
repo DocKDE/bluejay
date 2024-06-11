@@ -54,9 +54,10 @@ modules:
       - docker-compose-plugin
       - fira-code-fonts
       - meld
-      - pam_u2f
+      - pam-u2f
+      - pamu2fcfg
       - pam_yubico
-      - util-linux-use
+      - util-linux-user
       - virt-manager
       - webapp-manager
       - wkhtmltopdf

@@ -54,10 +54,16 @@ modules:
       - docker-compose-plugin
       - fira-code-fonts
       - meld
+      - pam_u2f
+      - pam_yubico
+      - util-linux-use
       - virt-manager
       - webapp-manager
       - wkhtmltopdf
-      - util-linux-user
+      - yubikey-manager
+      - yubikey-manager-qt
+      - ykpers
+      - yubikey-personalization-gui
 
     remove:
       - toolbox
@@ -159,3 +165,4 @@ modules:
       - proton.sh
       - repo-cleanup-dx.sh
       - unredirect.sh
+      - yubico.sh

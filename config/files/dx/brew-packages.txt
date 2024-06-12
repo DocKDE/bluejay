@@ -1,6 +1,5 @@
 ansible
 atuin
-awscli
 bash-language-server
 bat
 bottom
@@ -15,9 +14,9 @@ fzf
 git-credential-libsecret
 git-delta
 git-filter-repo
-git-remote-codecommit
 gitleaks
 glow
+grype
 yq
 helix
 jless
@@ -39,4 +38,3 @@ zoxide
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
-       

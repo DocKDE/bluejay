@@ -61,7 +61,6 @@ modules:
       - yubikey-manager
       - yubikey-manager-qt
       - yubikey-personalization-gui
-      - yubioath-desktop
 
     remove:
       - toolbox

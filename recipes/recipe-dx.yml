@@ -52,11 +52,12 @@ modules:
       - docker-ce-cli
       - docker-compose-plugin
       - meld
-      - pam-u2f
-      - pamu2fcfg
       - util-linux-user
       - virt-manager
       - wkhtmltopdf
+      # Yubikey dependencies
+      - pam-u2f
+      - pamu2fcfg
       - ykpers
       - yubikey-manager
       - yubikey-manager-qt

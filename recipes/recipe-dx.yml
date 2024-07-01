@@ -59,8 +59,6 @@ modules:
       - pam-u2f
       - pamu2fcfg
       - ykpers
-      - yubikey-manager
-      - yubikey-manager-qt
       - yubikey-personalization-gui
 
     remove:

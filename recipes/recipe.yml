@@ -95,7 +95,6 @@ modules:
       # Custom
       - org.gtk.Gtk3theme.adw-gtk3
       - org.gtk.Gtk3theme.adw-gtk3-dark
-      - com.bitwarden.desktop
       - io.freetubeapp.FreeTube
       - org.gnome.gThumb
       - com.github.iwalton3.jellyfin-media-player

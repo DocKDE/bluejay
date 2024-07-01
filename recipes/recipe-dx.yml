@@ -132,7 +132,6 @@ modules:
       - com.github.tchx84.Flatseal
       - org.gustavoperedo.FontDownloader
       - org.mozilla.firefox
-      - com.brave.Browser
       - org.libreoffice.LibreOffice
       - org.mozilla.Thunderbird
       - org.localsend.localsend_app
